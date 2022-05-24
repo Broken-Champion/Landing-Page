@@ -50,28 +50,29 @@ for(let i = 0; i < navBarItems.length; i++) {
 //this event listener is used to use a scrolling animation and scroll the first section into view.
 firstNavItem.addEventListener('click', function(event) {
     event.preventDefault();
-    document.getElementById('section1').scrollIntoView({behavior:'smooth', block:'center'});
+    document.getElementById('section1').scrollIntoView({behavior:'smooth'});
 }, false);
 
 //this event listener is used to use a scrolling animation and scroll the second section into view.
 secondNavItem.addEventListener('click', function(event) {
     event.preventDefault();
-    document.getElementById('section2').scrollIntoView({behavior:'smooth', block:'center'});
+    document.getElementById('section2').scrollIntoView({behavior:'smooth'});
 }, false);
 
 //this event listener is used to use a scrolling animation and scroll the third section into view.
 thirdNavItem.addEventListener('click', function(event) {
     event.preventDefault();
-    document.getElementById('section3').scrollIntoView({behavior:'smooth', block:'center'});
+    document.getElementById('section3').scrollIntoView({behavior:'smooth'});
 }, false);
 
 //this event listener is used to use a scrolling animation and scroll the forth section into view.
 forthNavItem.addEventListener('click', function (event) {
     event.preventDefault();
-    document.getElementById('section4').scrollIntoView({behavior:'smooth', block:'center'});
+    document.getElementById('section4').scrollIntoView({behavior:'smooth'});
 }, false);
 
 //this event listener is used to add the active class to each one of the sections the moment they're in the viewport.
+//the styling for the relevant navigation bar element gets updated with the active state of each section
 window.addEventListener('scroll', function () {
     const sections = document.querySelectorAll('.sections');
 
@@ -80,10 +81,12 @@ window.addEventListener('scroll', function () {
       const elementTop = sections[i].getBoundingClientRect().top;
       const elementBottom = sections[i].getBoundingClientRect().bottom;
 
-       if (elementTop > 0 && elementTop < windowHeight && elementBottom < windowHeight) {
+       if (elementTop > 0 && elementTop < windowHeight && elementBottom < windowHeight || elementBottom > windowHeight && elementTop < windowHeight) {
         sections[i].classList.add('active');
+        navBarItems[i].style.cssText += 'background-color: white; cursor: pointer; color:black;';
       } else if (elementTop <= 0 || elementTop > windowHeight || elementBottom > windowHeight) {
         sections[i].classList.remove('active');
+        navBarItems[i].style.cssText += 'background-color: black; color: white; cursor: auto;';
       }
     }
   });
