@@ -21,3 +21,9 @@ there are notes in every part of the code explaining what each function and meth
 the scrollbar was customized to go better with the color of the page using css.
 
 the cursor changes when hover over any of the navigation bar elements or the page footer to indicate that they're clickable.
+
+the navigation bar elements are now styled whenever the relevant section is detected on screen.
+
+the section detection works on smaller devices and tablets as well.
+
+the code is as compact as possible to eliminate redundancy.
